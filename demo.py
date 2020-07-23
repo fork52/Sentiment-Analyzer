@@ -15,15 +15,29 @@ class GUI:
         # self.algo_choice = tk.IntVar(root,value=1)
     
     def add_textbox(self):
+        '''Add and configure the main textbox for input'''
         self.hv16 = Font(family="Helvetica", size=16)
-        sc = ScrolledText(root,font=self.hv16,bg='#c0effc')
+
+        sc = ScrolledText(
+            master = self.root,
+            font=self.hv16,bg='#c0effc',
+            padx = 20 , pady=20
+        )
+
+        self.top_margin = 60
+        self.left_margin = 50
+        self.txt_width = 600
+        self.txt_height = 200
         sc.place(   
-             x = 50 ,y = 60 ,
-            width=600 , height = 200
+            x = self.left_margin ,
+            y = self.top_margin ,
+            width= self.txt_width , height = self.txt_height
         )
 
 
-
+    def add_buttons(self):
+        '''Adds buttons to the GUI'''
+        pass
 
 if __name__ == "__main__":
     window = GUI()
