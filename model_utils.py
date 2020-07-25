@@ -10,40 +10,45 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from numpy import argmax
 from pickle import load as pkl_load
 
-#Setting hyperparameters
-vocab_size = 20000
-embedding_dim = 32
-oov_tok = "<OOV>"
-trunc_type='post'
-max_length = 220
-padding_type='post'
 
-def prepare_input(X:list):
-    '''Convert input to'''
-    with open('models/tokenizer.pkl', 'rb') as f:
-        tokenizer = pkl_load(f)
 
-    sequences = tokenizer.texts_to_sequences(X)
+class FullyConnected_NN():
+    def __init__(self):
+        #Setting hyperparameters
+        self.vocab_size = 20000
+        self.embedding_dim = 32
+        self.oov_tok = "<OOV>"
+        self.trunc_type='post'
+        self.max_length = 220
+        self.padding_type='post'
 
-    padded = pad_sequences(
-                           sequences,
-                           maxlen=max_length,
-                           truncating=trunc_type,
-                           padding=padding_type
-                        )
-    return padded
+        with open('models/tokenizer.pkl', 'rb') as f:
+            self.tokenizer = pkl_load(f)
+        self.model = load_model('models/basic_model')
 
-def get_rating(model_path:str , sentence:str ):
-    '''Takes as input path to model and a sentence.'''
-    model = load_model(model_path)
-    new_sent = [sentence]
-    new_data = prepare_input(new_sent)
-    rating = argmax( model.predict(new_data) ) + 1
-    return rating
+    def prepare_input(self,X:list):
+        '''Convert input X to padded sequences'''
+        sequences = self.tokenizer.texts_to_sequences(X)
+
+        padded = pad_sequences(
+                            sequences,
+                            maxlen=self.max_length,
+                            truncating=self.trunc_type,
+                            padding=self.padding_type
+                            )
+        return padded
+
+    def get_rating(self,sentence:str ):
+        '''Takes as input path to model and a sentence.'''
+        new_sent = [sentence]
+        new_data = self.prepare_input(new_sent)
+        rating = argmax( self.model.predict(new_data) ) + 1
+        return rating
 
 if __name__ == "__main__":
     sentence = 'This is a decent and average product i guess.'
-    rating = get_rating('models/basic_model',sentence)
+    obj = FullyConnected_NN()
+    rating = obj.get_rating(sentence)
     print('Rating given by model is:',rating)
 
 

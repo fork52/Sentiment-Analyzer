@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter.font import Font
+from PIL import Image,ImageTk
+from model_utils import FullyConnected_NN
 
 class GUI:
     '''Main class for GUI class'''
@@ -69,7 +71,10 @@ class GUI:
         FullyConnected = tk.Radiobutton( self.root, 
                   text= 'FullyConnected NN',
                   variable=self.model_choice, 
-                  value = 1 
+                  value = 1 ,
+                  width = 20,padx=5,pady=3,
+                  justify='left'
+
                   )
         FullyConnected.place(x = self.radio_label[0], y=self.radio_label[1]+ 60)
 
@@ -77,7 +82,9 @@ class GUI:
         RNN = tk.Radiobutton( self.root, 
             text= 'Recurrent Neural Network',
             variable=self.model_choice, 
-            value = 2
+            value = 2,
+            width = 20,padx=5,pady=3,
+            justify='left'
             )
         RNN.place(x = self.radio_label[0], y=self.radio_label[1]+ 100)
 
@@ -85,17 +92,49 @@ class GUI:
         LSTM = tk.Radiobutton( self.root, 
             text= 'LSTM network',
             variable=self.model_choice, 
-            value = 3
+            value = 3,
+            width = 20,padx=5,pady=3,
+            justify='left'
             )
         LSTM.place(x = self.radio_label[0], y=self.radio_label[1]+ 140)
 
     def submit_command(self):
         self.sentence = self.sc.get('1.0', tk.END)[:-1]
-        print(self.sentence)
+        self.add_rating_image(self.sentence)
 
     def scrollText_command(self):
         # Note that sc.get() returns a \n at the end of the string.
         self.sc.delete(1.0,tk.END)
+
+    def add_rating_image(self,sentence):
+        #Load the model class's 
+        obj = FullyConnected_NN()
+        current_rating = obj.get_rating(self.sentence)
+
+        #Adding Label for rating
+        self.verdana1 = Font(self.root ,family = 'Verdana',size=14)
+        self.rating_label = tk.Label(
+            self.root, text = 'Rating Prediction:',
+            padx = 40 , pady = 8,font = self.verdana16
+        )
+        self.rating_label.place(
+            x=self.left_margin+self.txt_width-280,
+            y = self.top_margin + self.txt_height + 100
+        )
+
+        # Adding image to model
+        img_name = f'images/{current_rating}star.jpg'
+        img = Image.open(img_name)
+        img  = img.resize( (200,40) ,Image.ANTIALIAS)
+        rating_img  = ImageTk.PhotoImage(img)
+        img_label = tk.Label(self.root, image=rating_img)
+        img_label.image = rating_img
+        img_label.place(
+            x=self.left_margin+self.txt_width-250,
+            y = self.top_margin + self.txt_height + 160
+        )
+
+    
 
 if __name__ == "__main__":
     window = GUI()
@@ -103,4 +142,5 @@ if __name__ == "__main__":
     window.add_textbox()
     window.add_buttons()
     window.add_radio_buttons()
+    # window.add_rating_image()
     root.mainloop()
