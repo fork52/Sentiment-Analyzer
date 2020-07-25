@@ -10,7 +10,6 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from numpy import argmax
 from pickle import load as pkl_load
 
-
 #Setting hyperparameters
 vocab_size = 20000
 embedding_dim = 32
