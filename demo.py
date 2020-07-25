@@ -10,7 +10,7 @@ class GUI:
         """Set up the window features for tkinter window"""
         root = tk.Tk()
         root.title('Review Sentiment Analyzer')
-        root.geometry('700x630+350+50') # widthXheight topx+topy
+        root.geometry('700x550+350+50') # widthXheight topx+topy
         root.resizable(False, False)
         root.configure(background='black')
         self.root = root
