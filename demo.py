@@ -12,8 +12,8 @@ class GUI:
         root.resizable(False, False)
         root.configure(background='black')
         self.root = root
+        self.model_choice = tk.IntVar(root,value=1)
         return root
-        # self.algo_choice = tk.IntVar(root,value=1)
     
     def add_textbox(self):
         '''Add and configure the main textbox for input'''
@@ -44,11 +44,53 @@ class GUI:
                         width = 100  , height = 50,
         )
 
+        submitBtn = tk.Button(self.root , text = 'Submit',command = self.submit_command)      
+        submitBtn.place(
+                        x =  self.left_margin + self.txt_width-260 ,
+                        y = self.top_margin + self.txt_height+20,
+                        width = 100  , height = 50,
+        )
         
-        pass
+    def add_radio_buttons(self):
+        #Create label for the algorithms
+
+        self.verdana16 = Font(self.root ,family = 'Verdana',size=14)
+        model_label = tk.Label(
+            self.root, text = 'Choose Model :-',
+            padx = 20 , pady = 8,font = self.verdana16
+        )
+        self.radio_label = (self.left_margin + 30,self.top_margin + self.txt_height+20 )
+        model_label.place(
+                x = self.radio_label[0] ,
+                y = self.radio_label[1]  
+        )
+
+        #Option one
+        FullyConnected = tk.Radiobutton( self.root, 
+                  text= 'FullyConnected NN',
+                  variable=self.model_choice, 
+                  value = 1 
+                  )
+        FullyConnected.place(x = self.radio_label[0], y=self.radio_label[1]+ 60)
+
+        #Option two
+        RNN = tk.Radiobutton( self.root, 
+            text= 'Recurrent Neural Network',
+            variable=self.model_choice, 
+            value = 2
+            )
+        RNN.place(x = self.radio_label[0], y=self.radio_label[1]+ 100)
+
+        #Option three
+        LSTM = tk.Radiobutton( self.root, 
+            text= 'LSTM network',
+            variable=self.model_choice, 
+            value = 3
+            )
+        LSTM.place(x = self.radio_label[0], y=self.radio_label[1]+ 140)
 
     def submit_command(self):
-        self.sentence = self.sc.get('1.0', tk.END)
+        self.sentence = self.sc.get('1.0', tk.END)[:-1]
         print(self.sentence)
 
     def scrollText_command(self):
@@ -60,4 +102,5 @@ if __name__ == "__main__":
     root = window.create_root()
     window.add_textbox()
     window.add_buttons()
+    window.add_radio_buttons()
     root.mainloop()
