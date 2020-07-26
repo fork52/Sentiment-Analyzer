@@ -1,4 +1,4 @@
-# Sentiment_Analyzer
+# Review Sentiment Analyzer
 **Predicting App Rating based on App Reviews with deep learning.** 
 
 [![MIT License][license-image]][license-url]
