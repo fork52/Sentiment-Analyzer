@@ -11,12 +11,13 @@ class GUI:
         self.model_mapper = {
             1: 'FCN',
             2: 'RNN',
-            3: 'LSTM'
+            3: 'GRU'
+            
         }
         self.models = {
             'FCN' : False,
             'RNN' : False,
-            'LSTM' : False
+            'GRU' : False
         }
         pass
 
