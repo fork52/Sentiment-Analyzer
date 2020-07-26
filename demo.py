@@ -4,8 +4,22 @@ from tkinter.font import Font
 from PIL import Image,ImageTk
 from model_utils import FullyConnected_NN
 
+
 class GUI:
     '''Main class for GUI class'''
+    def __init__(self):
+        self.model_mapper = {
+            1: 'FCN',
+            2: 'RNN',
+            3: 'LSTM'
+        }
+        self.models = {
+            'FCN' : False,
+            'RNN' : False,
+            'LSTM' : False
+        }
+        pass
+
     def create_root(self):
         """Set up the window features for tkinter window"""
         root = tk.Tk()
