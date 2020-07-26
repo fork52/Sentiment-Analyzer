@@ -11,8 +11,7 @@ from numpy import argmax
 from pickle import load as pkl_load
 
 
-
-class FullyConnected_NN():
+class FullyConnected_NN:
     def __init__(self):
         #Setting hyperparameters
         self.vocab_size = 20000
@@ -45,9 +44,24 @@ class FullyConnected_NN():
         rating = argmax( self.model.predict(new_data) ) + 1
         return rating
 
+class GRU(FullyConnected_NN):
+    def __init__(self):
+        #Setting hyperparameters
+        self.vocab_size = 20000
+        self.embedding_dim = 32
+        self.oov_tok = "<OOV>"
+        self.trunc_type='post'
+        self.max_length = 220
+        self.padding_type='post'
+
+        with open('models/gru_tokenizer.pkl', 'rb') as f:
+            self.tokenizer = pkl_load(f)
+        self.model = load_model('models/GRU_model')
+
+
 if __name__ == "__main__":
     sentence = 'This is a decent and average product i guess.'
-    obj = FullyConnected_NN()
+    obj = GRU()
     rating = obj.get_rating(sentence)
     print('Rating given by model is:',rating)
 

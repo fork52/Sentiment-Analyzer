@@ -2,22 +2,21 @@ import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter.font import Font
 from PIL import Image,ImageTk
-from model_utils import FullyConnected_NN
-
+from model_utils import FullyConnected_NN,GRU
 
 class GUI:
     '''Main class for GUI class'''
     def __init__(self):
         self.model_mapper = {
-            1: 'FCN',
+            1: FullyConnected_NN,
             2: 'RNN',
-            3: 'GRU'
-            
+            3: GRU
         }
+
         self.models = {
-            'FCN' : False,
+            FullyConnected_NN : False,
             'RNN' : False,
-            'GRU' : False
+            GRU : False
         }
         pass
 
@@ -123,8 +122,14 @@ class GUI:
 
     def add_rating_image(self,sentence):
         #Load the model class's 
-        obj = FullyConnected_NN()
-        current_rating = obj.get_rating(self.sentence)
+        model_type = self.model_mapper[self.model_choice.get()]
+        
+        model_obj = self.models.get(model_type,False)
+        if not model_obj:
+            model_obj = self.models[model_type] =  model_type()
+    
+        # print(model_obj.model.summary())
+        current_rating = model_obj.get_rating(self.sentence)
 
         #Adding Label for rating
         self.verdana1 = Font(self.root ,family = 'Verdana',size=14)
