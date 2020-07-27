@@ -37,6 +37,23 @@ You can test the models with your own sentences by running the [demo.py](https:/
 
 3. [numpy](https://numpy.org/install/) : The fundamental package for scientific computing with Python.
 
+## Using the models
+
+From model_utils.py, import one of the four classes:
+1. FullyConnected_NN
+2. BiRNN
+3. GRU
+4. BiLSTM
+
+```python
+>>> from model_utils import GRU
+>>> obj = GRU()
+>>> sentence = 'This app is extremely amazing!'
+>>> obj.get_rating(sentence)
+5
+```
+
+Note that the object creation might take 3-5 seconds to since the model is slightly large.
 
 ## Future Work
 Will try to build better models which can provide better performance and commit the changes.
@@ -45,7 +62,6 @@ Will try to build better models which can provide better performance and commit 
 1. Have been working on this project whilst completing this amazing specialization [Tensorflow in Practice on Coursera](https://www.coursera.org/specializations/tensorflow-in-practice). A few code snippets and ideas I have used for training are directly inspired from the content in the course.
 
 2. As mentioned earlier, the dataset I have used for training is a subset from the [Amazon product data](http://jmcauley.ucsd.edu/data/amazon/) for Android apps.
-
 
 ## License
 The repository is licensed under MIT License.
