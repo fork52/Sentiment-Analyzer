@@ -6,7 +6,7 @@
 [![Code size][code-img]][repo-url]
 
 ## Description
-The repository is dedicated to performing `Fine Grained Sentiment Analysis` on text into five polarity classes using deep learning models in `Python`. A subset of the [Amazon Product Data](http://jmcauley.ucsd.edu/data/amazon/) for Android Apps has been used for training the various models. 
+The repository is dedicated to performing `Fine Grained Sentiment Analysis` on text into five polarity classes using deep learning models in `Python`. A subset of the [Amazon Product Data](http://jmcauley.ucsd.edu/data/amazon/) for **Android Apps** has been used for training the various models.
 
 The sentiment class labels are:
 * 0 - Extremely negative (1 star)
@@ -22,8 +22,9 @@ The sentiment class labels are:
 </p>
 
 
-You can test the models with your own sentences by running the [demo.py](https://github.com/fork52/Sentiment-Analyzer/blob/master/demo.py) file. The GUI has been with Python's inbuilt` tkinter` module.
+You can test the models with your own sentences by running the [demo.py](https://github.com/fork52/Sentiment-Analyzer/blob/master/demo.py) file. The GUI has been with Python's inbuilt **tkinter** module.
 
+ Also, do checkout the [Notebook](https://github.com/fork52/Sentiment-Analyzer/blob/master/Sentiment_Analyzer.ipynb) which I used for training.
 
 ## Enjoy playing around with the embedding visualization:
 * [Click here for embedding visualization!!](https://projector.tensorflow.org/?config=https://raw.githubusercontent.com/fork52/Sentiment-Analyzer/master/Embeddings/embed.config)
@@ -37,10 +38,14 @@ You can test the models with your own sentences by running the [demo.py](https:/
 3. [numpy](https://numpy.org/install/) : The fundamental package for scientific computing with Python.
 
 
-
-
 ## Future Work
 Will try to build better models which can provide better performance and commit the changes.
+
+## Credits
+1. Have been working on this project whilst completing this amazing specialization [Tensorflow in Practice on Coursera](https://www.coursera.org/specializations/tensorflow-in-practice). A few code snippets and ideas I have used for training are directly inspired from the content in the course.
+
+2. As mentioned earlier, the dataset I have used for training is a subset from the [Amazon product data](http://jmcauley.ucsd.edu/data/amazon/) for Android apps.
+
 
 ## License
 The repository is licensed under MIT License.
