@@ -18,7 +18,7 @@ The sentiment class labels are:
 ## Visualization Demo
 
 <p align="center">
-<img src="https://github.com/fork52/Sudoku-Solver/blob/master/readme_resources/Sudoku_demo.gif" width="70%" height="70%">
+<img src="https://github.com/fork52/Sentiment-Analyzer/blob/master/Readme_resources/demo.gif" width="70%" height="70%">
 </p>
 
 
