@@ -10,7 +10,6 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from numpy import argmax
 from pickle import load as pkl_load
 
-
 class FullyConnected_NN:
     def __init__(self):
         #Setting hyperparameters
@@ -58,6 +57,34 @@ class GRU(FullyConnected_NN):
             self.tokenizer = pkl_load(f)
         self.model = load_model('models/GRU_model')
 
+class BiRNN(FullyConnected_NN):
+    def __init__(self):
+        #Setting hyperparameters
+        self.vocab_size = 20000
+        self.embedding_dim = 32
+        self.oov_tok = "<OOV>"
+        self.trunc_type='post'
+        self.max_length = 220
+        self.padding_type='post'
+
+        with open('models/BiRNN_tokenizer.pkl', 'rb') as f:
+            self.tokenizer = pkl_load(f)
+        self.model = load_model('models/BiRNN_model')
+
+class BiLSTM(FullyConnected_NN):
+    def __init__(self):
+        #Setting hyperparameters
+        self.vocab_size = 20000
+        self.embedding_dim = 32
+        self.oov_tok = "<OOV>"
+        self.trunc_type='post'
+        self.max_length = 220
+        self.padding_type='post'
+
+        # The tokenizer is essentially the same as for BiRNN
+        with open('models/BiRNN_tokenizer.pkl', 'rb') as f:
+            self.tokenizer = pkl_load(f)
+        self.model = load_model('models/BiLSTM_model')
 
 if __name__ == "__main__":
     sentence = 'This is a decent and average product i guess.'

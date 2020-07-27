@@ -2,20 +2,20 @@ import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 from tkinter.font import Font
 from PIL import Image,ImageTk
-from model_utils import FullyConnected_NN,GRU
+from model_utils import FullyConnected_NN,GRU,BiRNN
 
 class GUI:
     '''Main class for GUI class'''
     def __init__(self):
         self.model_mapper = {
             1: FullyConnected_NN,
-            2: 'RNN',
+            2: BiRNN,
             3: GRU
         }
 
         self.models = {
             FullyConnected_NN : False,
-            'RNN' : False,
+            BiRNN : False,
             GRU : False
         }
         pass
@@ -103,14 +103,14 @@ class GUI:
         RNN.place(x = self.radio_label[0], y=self.radio_label[1]+ 100)
 
         #Option three
-        LSTM = tk.Radiobutton( self.root, 
-            text= 'LSTM network',
+        GRU_choice = tk.Radiobutton( self.root, 
+            text= 'GRU network',
             variable=self.model_choice, 
             value = 3,
             width = 20,padx=5,pady=3,
             justify='left'
             )
-        LSTM.place(x = self.radio_label[0], y=self.radio_label[1]+ 140)
+        GRU_choice.place(x = self.radio_label[0], y=self.radio_label[1]+ 140)
 
     def submit_command(self):
         self.sentence = self.sc.get('1.0', tk.END)[:-1]

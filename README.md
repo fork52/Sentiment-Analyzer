@@ -1,12 +1,15 @@
 # Review Sentiment Analyzer
-**Predicting App Rating based on App Reviews with deep learning.** 
+**Fine grained sentiment analysis on App Reviews with deep learning.** 
 
 [![MIT License][license-image]][license-url]
 [![python usage][lang-img]][repo-url]
 [![Code size][code-img]][repo-url]
 
 ## Enjoy playing with the embeddings:
-Link: [Embeddings Link](https://projector.tensorflow.org/?config=https://raw.githubusercontent.com/fork52/Sentiment-Analyzer/master/Embeddings/embed.config)
+[Click here for embedding visualization!!](https://projector.tensorflow.org/?config=https://raw.githubusercontent.com/fork52/Sentiment-Analyzer/master/Embeddings/embed.config)
+
+## Future Work
+Will try to build better models which can provide better performance.
 
 ## License
 The repository is licensed under MIT License.
