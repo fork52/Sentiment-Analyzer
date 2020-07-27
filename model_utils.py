@@ -87,6 +87,7 @@ class BiLSTM(FullyConnected_NN):
         self.model = load_model('models/BiLSTM_model')
 
 if __name__ == "__main__":
+    # Sample Usage
     sentence = 'This is a decent and average product i guess.'
     obj = GRU()
     rating = obj.get_rating(sentence)

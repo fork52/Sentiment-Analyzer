@@ -130,6 +130,8 @@ class GUI:
     def scrollText_command(self):
         # Note that sc.get() returns a \n at the end of the string.
         self.sc.delete(1.0,tk.END)
+        self.rating_label.place_forget()
+        self.img_label.place_forget()
 
     def add_rating_image(self,sentence):
         #Load the model class's 
@@ -158,9 +160,9 @@ class GUI:
         img = Image.open(img_name)
         img  = img.resize( (200,40) ,Image.ANTIALIAS)
         rating_img  = ImageTk.PhotoImage(img)
-        img_label = tk.Label(self.root, image=rating_img)
-        img_label.image = rating_img
-        img_label.place(
+        self.img_label = tk.Label(self.root, image=rating_img)
+        self.img_label.image = rating_img
+        self.img_label.place(
             x=self.left_margin+self.txt_width-250,
             y = self.top_margin + self.txt_height + 160
         )
