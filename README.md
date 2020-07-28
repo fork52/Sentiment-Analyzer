@@ -24,7 +24,7 @@ The sentiment class labels are:
 
 You can test the models with your own sentences by running the [demo.py](https://github.com/fork52/Sentiment-Analyzer/blob/master/demo.py) file. The GUI has been with Python's inbuilt **tkinter** module.
 
- Also, do checkout the [Notebook](https://github.com/fork52/Sentiment-Analyzer/blob/master/Sentiment_Analyzer.ipynb) which I used for training.
+ Also, do checkout the [Notebook](https://github.com/fork52/Sentiment-Analyzer/blob/master/Sentiment_Analysis.ipynb) which I used for training.
 
 ## Enjoy playing around with the embedding visualization:
 * [Click here for embedding visualization!!](https://projector.tensorflow.org/?config=https://raw.githubusercontent.com/fork52/Sentiment-Analyzer/master/Embeddings/embed.config)
