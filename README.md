@@ -53,7 +53,7 @@ From model_utils.py, import one of the four classes:
 5
 ```
 
-Note that the object creation might take 3-5 seconds to since the model is slightly large.
+Note that the object creation might take 3-5 seconds to since the model is slightly large. BiLSTM will give the best performance.
 
 ## Future Work
 Will try to build better models which can provide better performance and commit the changes.
